@@ -1,354 +1,338 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.6">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuchies Pet Waste Calculator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #191919; /* Dark gray background for body */
+            color: #e2e8f0; /* Light text color for body */
+        }
+        /* Basic styling for form elements */
+        label {
+            font-weight: 500;
+            color: #cccccc; /* Lighter gray for labels */
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        select, input[type="number"], input[type="checkbox"] {
+            padding: 0.625rem; /* 10px */
+            border-radius: 0.375rem; /* rounded-md */
+            border: 1px solid #555555; /* Darker border */
+            background-color: #3a3a3a; /* Darker background for inputs */
+            color: #eeeeee; /* Light text in inputs */
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        select:focus, input[type="number"]:focus, input[type="checkbox"]:focus {
+            outline: none;
+            border-color: #63b3ed; /* Lighter blue for focus */
+            box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.25); /* Light blue ring */
+        }
+        /* Hide spinner buttons for number inputs */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        /* Custom checkbox styling */
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            display: inline-block;
+            width: 1.25rem; /* 20px */
+            height: 1.25rem; /* 20px */
+            border: 2px solid #888888; /* Light gray border */
+            border-radius: 0.25rem;
+            vertical-align: middle;
+            position: relative;
+            cursor: pointer;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #63b3ed; /* Light blue */
+            border-color: #63b3ed;
+        }
+        input[type="checkbox"]:checked::after {
+            content: '✔';
+            color: white;
+            font-size: 0.75rem; /* 12px */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Fuchies Pet Waste Calculator&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Tailwind CSS CDN --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Custom font for a clean look */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: "Inter", sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #191919; /* Dark gray background for body */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #e2e8f0; /* Light text color for body */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Basic styling for form elements */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>label {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #cccccc; /* Lighter gray for labels */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>select, input[type="number"], input[type="checkbox"] {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.625rem; /* 10px */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.375rem; /* rounded-md */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #555555; /* Darker border */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3a3a3a; /* Darker background for inputs */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #eeeeee; /* Light text in inputs */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>select:focus, input[type="number"]:focus, input[type="checkbox"]:focus {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: #63b3ed; /* Lighter blue for focus */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.25); /* Light blue ring */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Hide spinner buttons for number inputs */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>input[type="number"]::-webkit-outer-spin-button,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>input[type="number"]::-webkit-inner-spin-button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-appearance: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>input[type="number"] {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-moz-appearance: textfield;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Custom checkbox styling */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>input[type="checkbox"] {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-appearance: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-moz-appearance: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>appearance: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 1.25rem; /* 20px */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 1.25rem; /* 20px */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #888888; /* Light gray border */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.25rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>vertical-align: middle;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>input[type="checkbox"]:checked {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #63b3ed; /* Light blue */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-color: #63b3ed;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>input[type="checkbox"]:checked::after {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '✔';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.75rem; /* 12px */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translate(-50%, -50%);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-[#191919] p-4 sm:p-8 flex items-center justify-center min-h-screen"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container mx-auto bg-[#222222] shadow-lg rounded-lg p-6 sm:p-8 max-w-4xl w-full text-gray-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="text-3xl font-extrabold text-white mb-8 text-center"&gt;Fuchies Pet Waste Calculator&lt;/h1&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Inputs Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-[#2b2b2b] p-6 rounded-lg shadow-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-xl font-bold text-[#dddddd] mb-4"&gt;Inputs&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="num-dogs" class="block text-sm font-medium text-[#cccccc]"&gt;Number of Dogs:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="num-dogs" class="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="1"&gt;1&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="2"&gt;2&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="3"&gt;3&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="4"&gt;4&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="frequency" class="block text-sm font-medium text-[#cccccc]"&gt;Frequency:&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="frequency" class="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Twice a Week"&gt;Twice a Week&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Once a Week"&gt;Once a Week&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Bi-Weekly"&gt;Bi-Weekly&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="Once a Month"&gt;Once a Month&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="deodorization" class="h-4 w-4 text-blue-400 border-[#888888] rounded focus:ring-blue-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="deodorization" class="ml-2 block text-sm text-[#eeeeee]"&gt;Deodorization?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="offsite-disposal" class="h-4 w-4 text-blue-400 border-[#888888] rounded focus:ring-blue-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="offsite-disposal" class="ml-2 block text-sm text-[#eeeeee]"&gt;Offsite Disposal?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="first-month" class="h-4 w-4 text-blue-400 border-[#888888] rounded focus:ring-blue-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="first-month" class="ml-2 block text-sm text-[#eeeeee]"&gt;First Month?&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Calculations Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-[#2b2b2b] p-6 rounded-lg shadow-inner"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-xl font-bold text-[#dddddd] mb-4"&gt;Calculations&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="space-y-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-[#cccccc]"&gt;Original Pricing (per visit):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="original-pricing" class="font-semibold text-[#eeeeee]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-[#cccccc]"&gt;Base Price (per visit):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="base-price" class="font-semibold text-[#eeeeee]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-[#cccccc]"&gt;Deodorization Cost (per visit):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="deodorization-cost" class="font-semibold text-[#eeeeee]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-[#cccccc]"&gt;Offsite Disposal Cost (per visit):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="offsite-disposal-cost" class="font-semibold text-[#eeeeee]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1 border-t pt-3 mt-3 border-[#444444]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-[#dddddd] font-bold"&gt;Subtotal (monthly):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="subtotal" class="font-bold text-[#63b3ed]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1 border-t pt-3 mt-3 border-[#444444]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-[#dddddd] font-bold text-lg"&gt;Final Price (monthly):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="final-price" class="font-bold text-[#22c55e] text-lg"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between items-center py-1 text-sm text-[#999999] italic"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Final Price WITHOUT Deodorization (monthly):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="final-price-without-deodorization" class="font-medium"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- First Month Pricing With Free Deo Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="first-month-pricing-div" class="space-y-2 border-t pt-3 mt-3 border-[#444444] hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-md font-bold text-[#dddddd]"&gt;First Month Pricing With free Deo (monthly):&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[#cccccc]"&gt;Monthly Total Before Discounts:&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span id="first-month-gross-amount" class="font-semibold text-[#eeeeee]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[#cccccc]"&gt;Discount (pet waste):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span id="first-month-pricing-discount1" class="font-semibold text-[#ef4444]"&gt;-$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center py-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[#cccccc]"&gt;Discount (Deodorization):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span id="first-month-pricing-discount2" class="font-semibold text-[#ef4444]"&gt;-$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center py-1 border-t pt-2 mt-2 border-[#444444]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[#dddddd] font-bold"&gt;Total (First Month Free Deo):&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span id="first-month-pricing-value" class="font-bold text-[#22c55e]"&gt;$0.00&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>// DOM Elements</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const numDogsSelect = document.getElementById('num-dogs');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const frequencySelect = document.getElementById('frequency'); // Corrected assignment</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const deodorizationCheckbox = document.getElementById('deodorization');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const offsiteDisposalCheckbox = document.getElementById('offsite-disposal');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const firstMonthCheckbox = document.getElementById('first-month');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const originalPricingDisplay = document.getElementById('original-pricing');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const basePriceDisplay = document.getElementById('base-price');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const deodorizationCostDisplay = document.getElementById('deodorization-cost');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const offsiteDisposalCostDisplay = document.getElementById('offsite-disposal-cost');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const subtotalDisplay = document.getElementById('subtotal');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const finalPriceDisplay = document.getElementById('final-price');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const finalPriceWithoutDeodorizationDisplay = document.getElementById('final-price-without-deodorization');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Elements for First Month Pricing With Free Deo</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const firstMonthPricingDiv = document.getElementById('first-month-pricing-div');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const firstMonthGrossAmount = document.getElementById('first-month-gross-amount');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const firstMonthPricingDiscount1 = document.getElementById('first-month-pricing-discount1');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const firstMonthPricingDiscount2 = document.getElementById('first-month-pricing-discount2');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const firstMonthPricingValue = document.getElementById('first-month-pricing-value');</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Price Tables and Rules - Updated with data from image_50fffa.png</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const PRICE_PER_VISIT_TABLE = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>1: { "Twice a Week": 20, "Once a Week": 25, "Bi-Weekly": 40, "Once a Month": 60 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>2: { "Twice a Week": 25, "Once a Week": 30, "Bi-Weekly": 45, "Once a Month": 65 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>3: { "Twice a Week": 30, "Once a Week": 35, "Bi-Weekly": 50, "Once a Month": 70 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>4: { "Twice a Week": 35, "Once a Week": 40, "Bi-Weekly": 55, "Once a Month": 75 }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const PRICE_PER_MONTH_TABLE = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>1: { "Twice a Week": 160, "Once a Week": 100, "Bi-Weekly": 80, "Once a Month": 60 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>2: { "Twice a Week": 200, "Once a Week": 120, "Bi-Weekly": 90, "Once a Month": 65 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>3: { "Twice a Week": 240, "Once a Week": 140, "Bi-Weekly": 100, "Once a Month": 70 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>4: { "Twice a Week": 280, "Once a Week": 160, "Bi-Weekly": 110, "Once a Month": 75 }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Updated ADD_ON_PER_VISIT based on new rules: 3-&gt;5 for deodorization, 5-&gt;7 for offsite after 3rd pet</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const ADD_ON_PER_VISIT = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Deodorization": { 1: 3, 2: 3, 3: 5, 4: 5 }, // 3 per visit up to 2 dogs, 5 per visit for 3+ dogs</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Offsite Disposal": { 1: 5, 2: 5, 3: 7, 4: 7 } // 5 per visit up to 2 dogs, 7 per visit for 3+ dogs</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Correcting ADD_ON_PER_MONTH to use the explicit values from the spreadsheet image (image_50fffa.png)</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const ADD_ON_PER_MONTH = { // Moved declaration to ensure it's defined before use</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Deodorization": { 1: 12, 2: 12, 3: 20, 4: 20 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Offsite Disposal": { 1: 20, 2: 20, 3: 28, 4: 28 }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const FIRST_MONTH_DISCOUNTS = {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Pet Waste": { 1: 20, 2: 30, 3: 40, 4: 50 },</p>
-<p class="p1"><span class="Apple-converted-space">                </span>"Deodorization": { 1: 12, 2: 12, 3: 20, 4: 20 }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Function to format currency</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const formatCurrency = (value) =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return `$${parseFloat(value).toFixed(2)}`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Main calculation function</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const calculatePrice = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const numDogs = parseInt(numDogsSelect.value);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const frequency = frequencySelect.value;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const deodorizationSelected = deodorizationCheckbox.checked;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const offsiteDisposalSelected = offsiteDisposalCheckbox.checked;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const firstMonthSelected = firstMonthCheckbox.checked;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 1. Determine Original Pricing (per visit)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>let originalBasePricePerVisit = 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (PRICE_PER_VISIT_TABLE[numDogs] &amp;&amp; PRICE_PER_VISIT_TABLE[numDogs][frequency]) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>originalBasePricePerVisit = PRICE_PER_VISIT_TABLE[numDogs][frequency];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>console.error("Invalid number of dogs or frequency selected for original base price.");</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const currentBasePricePerVisit = originalBasePricePerVisit; // Base Price (per visit) is the same as Original</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 2. Determine Deodorization Cost (per visit)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>let deodorizationCostPerVisit = 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (deodorizationSelected) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>deodorizationCostPerVisit = ADD_ON_PER_VISIT.Deodorization[numDogs];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 3. Determine Offsite Disposal Cost (per visit)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const offsiteDisposalCostPerVisit = offsiteDisposalSelected ? ADD_ON_PER_VISIT["Offsite Disposal"][numDogs] : 0;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Get Monthly Costs directly from new tables</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const monthlyBaseCost = PRICE_PER_MONTH_TABLE[numDogs] ? PRICE_PER_MONTH_TABLE[numDogs][frequency] : 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const monthlyDeodorizationCost = deodorizationSelected ? ADD_ON_PER_MONTH.Deodorization[numDogs] : 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const monthlyOffsiteDisposalCost = offsiteDisposalSelected ? ADD_ON_PER_MONTH["Offsite Disposal"][numDogs] : 0;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 4. Calculate Subtotal (monthly) - This is the total before any discounts are applied</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const subtotalMonthly = monthlyBaseCost + monthlyDeodorizationCost + monthlyOffsiteDisposalCost;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 5. Determine Pet Waste Discount Amount (monthly) for standard display</p>
-<p class="p1"><span class="Apple-converted-space">                </span>let petWasteDiscountAmount = 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const applicablePetWasteDiscount = FIRST_MONTH_DISCOUNTS["Pet Waste"][numDogs];</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (applicablePetWasteDiscount) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>petWasteDiscountAmount = applicablePetWasteDiscount;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 6. Calculate Final Price (monthly) - Regular price, no special first month discounts applied here</p>
-<p class="p1"><span class="Apple-converted-space">                </span>// This is the subtotal monthly.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const finalPriceMonthly = subtotalMonthly;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// 7. Calculate Final Price WITHOUT Deodorization (monthly)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>// This calculation assumes deodorization was never selected.</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const finalPriceWithoutDeodorizationMonthly = monthlyBaseCost + monthlyOffsiteDisposalCost;</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// First Month Pricing With Free Deo Calculation (for the new display section)</p>
-<p class="p1"><span class="Apple-converted-space">                </span>let firstMonthMonthlyTotalBeforeDeoDiscount = 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>let firstMonthDeoDiscountAmount = 0; // The actual amount of deodorization cost that is waived</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (firstMonthSelected) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>// This is the total cost including deodorization, before the deodorization discount is applied</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthMonthlyTotalBeforeDeoDiscount = monthlyBaseCost + monthlyDeodorizationCost + monthlyOffsiteDisposalCost;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>// If deodorization was selected, the discount for it is the full monthly deodorization cost</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>if (deodorizationSelected) {</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>firstMonthDeoDiscountAmount = FIRST_MONTH_DISCOUNTS.Deodorization[numDogs];</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Calculate the final total for this specific first-month free deo scenario</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const totalFirstMonthFreeDeo = firstMonthMonthlyTotalBeforeDeoDiscount - petWasteDiscountAmount - firstMonthDeoDiscountAmount;</p>
-<p class="p2"><br></p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Update UI</p>
-<p class="p1"><span class="Apple-converted-space">                </span>originalPricingDisplay.textContent = formatCurrency(originalBasePricePerVisit);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>basePriceDisplay.textContent = formatCurrency(currentBasePricePerVisit);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>deodorizationCostDisplay.textContent = formatCurrency(deodorizationCostPerVisit);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>offsiteDisposalCostDisplay.textContent = formatCurrency(offsiteDisposalCostPerVisit);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>subtotalDisplay.textContent = formatCurrency(subtotalMonthly);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>finalPriceDisplay.textContent = formatCurrency(Math.max(0, finalPriceMonthly));</p>
-<p class="p1"><span class="Apple-converted-space">                </span>finalPriceWithoutDeodorizationDisplay.textContent = formatCurrency(Math.max(0, finalPriceWithoutDeodorizationMonthly));</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>// Update NEW DISPLAY for First Month Pricing With Free Deo</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (firstMonthSelected) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthPricingDiv.classList.remove('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthGrossAmount.textContent = formatCurrency(firstMonthMonthlyTotalBeforeDeoDiscount);</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthPricingDiscount1.textContent = `-${formatCurrency(petWasteDiscountAmount)}`;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthPricingDiscount2.textContent = `-${formatCurrency(firstMonthDeoDiscountAmount)}`;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthPricingValue.textContent = formatCurrency(Math.max(0, totalFirstMonthFreeDeo));</p>
-<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>firstMonthPricingDiv.classList.add('hidden');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Add event listeners to all input elements to trigger calculation on change</p>
-<p class="p1"><span class="Apple-converted-space">            </span>numDogsSelect.addEventListener('change', calculatePrice);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>frequencySelect.addEventListener('change', calculatePrice);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>deodorizationCheckbox.addEventListener('change', calculatePrice);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>offsiteDisposalCheckbox.addEventListener('change', calculatePrice);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>firstMonthCheckbox.addEventListener('change', calculatePrice);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Initial calculation when the page loads</p>
-<p class="p1"><span class="Apple-converted-space">            </span>calculatePrice();</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="bg-[#191919] p-4 sm:p-8 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto bg-[#222222] shadow-lg rounded-lg p-6 sm:p-8 max-w-4xl w-full text-gray-100">
+        <h1 class="text-3xl font-extrabold text-white mb-8 text-center">Fuchies Pet Waste Calculator</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Inputs Section -->
+            <div class="bg-[#2b2b2b] p-6 rounded-lg shadow-inner">
+                <h2 class="text-xl font-bold text-[#dddddd] mb-4">Inputs</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label for="num-dogs" class="block text-sm font-medium text-[#cccccc]">Number of Dogs:</label>
+                        <select id="num-dogs" class="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="frequency" class="block text-sm font-medium text-[#cccccc]">Frequency:</label>
+                        <select id="frequency" class="mt-1 block w-full rounded-md shadow-sm focus:ring-blue-400 focus:border-blue-400 sm:text-sm">
+                            <option value="Twice a Week">Twice a Week</option>
+                            <option value="Once a Week">Once a Week</option>
+                            <option value="Bi-Weekly">Bi-Weekly</option>
+                            <option value="Once a Month">Once a Month</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="deodorization" class="h-4 w-4 text-blue-400 border-[#888888] rounded focus:ring-blue-400">
+                        <label for="deodorization" class="ml-2 block text-sm text-[#eeeeee]">Deodorization?</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="offsite-disposal" class="h-4 w-4 text-blue-400 border-[#888888] rounded focus:ring-blue-400">
+                        <label for="offsite-disposal" class="ml-2 block text-sm text-[#eeeeee]">Offsite Disposal?</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="first-month" class="h-4 w-4 text-blue-400 border-[#888888] rounded focus:ring-blue-400">
+                        <label for="first-month" class="ml-2 block text-sm text-[#eeeeee]">First Month?</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculations Section -->
+            <div class="bg-[#2b2b2b] p-6 rounded-lg shadow-inner">
+                <h2 class="text-xl font-bold text-[#dddddd] mb-4">Calculations</h2>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center py-1">
+                        <span class="text-[#cccccc]">Original Pricing (per visit):</span>
+                        <span id="original-pricing" class="font-semibold text-[#eeeeee]">$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1">
+                        <span class="text-[#cccccc]">Base Price (per visit):</span>
+                        <span id="base-price" class="font-semibold text-[#eeeeee]">$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1">
+                        <span class="text-[#cccccc]">Deodorization Cost (per visit):</span>
+                        <span id="deodorization-cost" class="font-semibold text-[#eeeeee]">$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1">
+                        <span class="text-[#cccccc]">Offsite Disposal Cost (per visit):</span>
+                        <span id="offsite-disposal-cost" class="font-semibold text-[#eeeeee]">$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 border-t pt-3 mt-3 border-[#444444]">
+                        <span class="text-[#dddddd] font-bold">Subtotal (monthly):</span>
+                        <span id="subtotal" class="font-bold text-[#63b3ed]">$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 border-t pt-3 mt-3 border-[#444444]">
+                        <span class="text-[#dddddd] font-bold text-lg">Final Price (monthly):</span>
+                        <span id="final-price" class="font-bold text-[#22c55e] text-lg">$0.00</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 text-sm text-[#999999] italic">
+                        <span>Final Price WITHOUT Deodorization (monthly):</span>
+                        <span id="final-price-without-deodorization" class="font-medium">$0.00</span>
+                    </div>
+
+                    <!-- First Month Pricing With Free Deo Section -->
+                    <div id="first-month-pricing-div" class="space-y-2 border-t pt-3 mt-3 border-[#444444] hidden">
+                        <h3 class="text-md font-bold text-[#dddddd]">First Month Pricing With free Deo (monthly):</h3>
+                        <div class="flex justify-between items-center py-1">
+                            <span class="text-[#cccccc]">Monthly Total Before Discounts:</span>
+                            <span id="first-month-gross-amount" class="font-semibold text-[#eeeeee]">$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center py-1">
+                            <span class="text-[#cccccc]">Discount (pet waste):</span>
+                            <span id="first-month-pricing-discount1" class="font-semibold text-[#ef4444]">-$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center py-1">
+                            <span class="text-[#cccccc]">Discount (Deodorization):</span>
+                            <span id="first-month-pricing-discount2" class="font-semibold text-[#ef4444]">-$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-center py-1 border-t pt-2 mt-2 border-[#444444]">
+                            <span class="text-[#dddddd] font-bold">Total (First Month Free Deo):</span>
+                            <span id="first-month-pricing-value" class="font-bold text-[#22c55e]">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
+            const numDogsSelect = document.getElementById('num-dogs');
+            const frequencySelect = document.getElementById('frequency'); // Corrected assignment
+            const deodorizationCheckbox = document.getElementById('deodorization');
+            const offsiteDisposalCheckbox = document.getElementById('offsite-disposal');
+            const firstMonthCheckbox = document.getElementById('first-month');
+
+            const originalPricingDisplay = document.getElementById('original-pricing');
+            const basePriceDisplay = document.getElementById('base-price');
+            const deodorizationCostDisplay = document.getElementById('deodorization-cost');
+            const offsiteDisposalCostDisplay = document.getElementById('offsite-disposal-cost');
+            const subtotalDisplay = document.getElementById('subtotal');
+            const finalPriceDisplay = document.getElementById('final-price');
+            const finalPriceWithoutDeodorizationDisplay = document.getElementById('final-price-without-deodorization');
+
+            // Elements for First Month Pricing With Free Deo
+            const firstMonthPricingDiv = document.getElementById('first-month-pricing-div');
+            const firstMonthGrossAmount = document.getElementById('first-month-gross-amount');
+            const firstMonthPricingDiscount1 = document.getElementById('first-month-pricing-discount1');
+            const firstMonthPricingDiscount2 = document.getElementById('first-month-pricing-discount2');
+            const firstMonthPricingValue = document.getElementById('first-month-pricing-value');
+
+
+            // Price Tables and Rules - Updated with data from image_50fffa.png
+            const PRICE_PER_VISIT_TABLE = {
+                1: { "Twice a Week": 20, "Once a Week": 25, "Bi-Weekly": 40, "Once a Month": 60 },
+                2: { "Twice a Week": 25, "Once a Week": 30, "Bi-Weekly": 45, "Once a Month": 65 },
+                3: { "Twice a Week": 30, "Once a Week": 35, "Bi-Weekly": 50, "Once a Month": 70 },
+                4: { "Twice a Week": 35, "Once a Week": 40, "Bi-Weekly": 55, "Once a Month": 75 }
+            };
+
+            const PRICE_PER_MONTH_TABLE = {
+                1: { "Twice a Week": 160, "Once a Week": 100, "Bi-Weekly": 80, "Once a Month": 60 },
+                2: { "Twice a Week": 200, "Once a Week": 120, "Bi-Weekly": 90, "Once a Month": 65 },
+                3: { "Twice a Week": 240, "Once a Week": 140, "Bi-Weekly": 100, "Once a Month": 70 },
+                4: { "Twice a Week": 280, "Once a Week": 160, "Bi-Weekly": 110, "Once a Month": 75 }
+            };
+
+            // Updated ADD_ON_PER_VISIT based on new rules: 3->5 for deodorization, 5->7 for offsite after 3rd pet
+            const ADD_ON_PER_VISIT = {
+                "Deodorization": { 1: 3, 2: 3, 3: 5, 4: 5 }, // 3 per visit up to 2 dogs, 5 per visit for 3+ dogs
+                "Offsite Disposal": { 1: 5, 2: 5, 3: 7, 4: 7 } // 5 per visit up to 2 dogs, 7 per visit for 3+ dogs
+            };
+
+            // Correcting ADD_ON_PER_MONTH to use the explicit values from the spreadsheet image (image_50fffa.png)
+            const ADD_ON_PER_MONTH = { // Moved declaration to ensure it's defined before use
+                "Deodorization": { 1: 12, 2: 12, 3: 20, 4: 20 },
+                "Offsite Disposal": { 1: 20, 2: 20, 3: 28, 4: 28 }
+            };
+
+
+            const FIRST_MONTH_DISCOUNTS = {
+                "Pet Waste": { 1: 20, 2: 30, 3: 40, 4: 50 },
+                "Deodorization": { 1: 12, 2: 12, 3: 20, 4: 20 }
+            };
+
+            // Function to format currency
+            const formatCurrency = (value) => {
+                return `$${parseFloat(value).toFixed(2)}`;
+            };
+
+            // Main calculation function
+            const calculatePrice = () => {
+                const numDogs = parseInt(numDogsSelect.value);
+                const frequency = frequencySelect.value;
+                const deodorizationSelected = deodorizationCheckbox.checked;
+                const offsiteDisposalSelected = offsiteDisposalCheckbox.checked;
+                const firstMonthSelected = firstMonthCheckbox.checked;
+
+                // 1. Determine Original Pricing (per visit)
+                let originalBasePricePerVisit = 0;
+                if (PRICE_PER_VISIT_TABLE[numDogs] && PRICE_PER_VISIT_TABLE[numDogs][frequency]) {
+                    originalBasePricePerVisit = PRICE_PER_VISIT_TABLE[numDogs][frequency];
+                } else {
+                    console.error("Invalid number of dogs or frequency selected for original base price.");
+                }
+                const currentBasePricePerVisit = originalBasePricePerVisit; // Base Price (per visit) is the same as Original
+
+                // 2. Determine Deodorization Cost (per visit)
+                let deodorizationCostPerVisit = 0;
+                if (deodorizationSelected) {
+                    deodorizationCostPerVisit = ADD_ON_PER_VISIT.Deodorization[numDogs];
+                }
+
+                // 3. Determine Offsite Disposal Cost (per visit)
+                const offsiteDisposalCostPerVisit = offsiteDisposalSelected ? ADD_ON_PER_VISIT["Offsite Disposal"][numDogs] : 0;
+
+                // Get Monthly Costs directly from new tables
+                const monthlyBaseCost = PRICE_PER_MONTH_TABLE[numDogs] ? PRICE_PER_MONTH_TABLE[numDogs][frequency] : 0;
+                const monthlyDeodorizationCost = deodorizationSelected ? ADD_ON_PER_MONTH.Deodorization[numDogs] : 0;
+                const monthlyOffsiteDisposalCost = offsiteDisposalSelected ? ADD_ON_PER_MONTH["Offsite Disposal"][numDogs] : 0;
+
+                // 4. Calculate Subtotal (monthly) - This is the total before any discounts are applied
+                const subtotalMonthly = monthlyBaseCost + monthlyDeodorizationCost + monthlyOffsiteDisposalCost;
+
+                // 5. Determine Pet Waste Discount Amount (monthly) for standard display
+                let petWasteDiscountAmount = 0;
+                const applicablePetWasteDiscount = FIRST_MONTH_DISCOUNTS["Pet Waste"][numDogs];
+                if (applicablePetWasteDiscount) {
+                    petWasteDiscountAmount = applicablePetWasteDiscount;
+                }
+
+                // 6. Calculate Final Price (monthly) - Regular price, no special first month discounts applied here
+                // This is the subtotal monthly.
+                const finalPriceMonthly = subtotalMonthly;
+
+                // 7. Calculate Final Price WITHOUT Deodorization (monthly)
+                // This calculation assumes deodorization was never selected.
+                const finalPriceWithoutDeodorizationMonthly = monthlyBaseCost + monthlyOffsiteDisposalCost;
+
+
+                // First Month Pricing With Free Deo Calculation (for the new display section)
+                let firstMonthMonthlyTotalBeforeDeoDiscount = 0;
+                let firstMonthDeoDiscountAmount = 0; // The actual amount of deodorization cost that is waived
+
+                if (firstMonthSelected) {
+                    // This is the total cost including deodorization, before the deodorization discount is applied
+                    firstMonthMonthlyTotalBeforeDeoDiscount = monthlyBaseCost + monthlyDeodorizationCost + monthlyOffsiteDisposalCost;
+
+                    // If deodorization was selected, the discount for it is the full monthly deodorization cost
+                    if (deodorizationSelected) {
+                        firstMonthDeoDiscountAmount = FIRST_MONTH_DISCOUNTS.Deodorization[numDogs];
+                    }
+                }
+                // Calculate the final total for this specific first-month free deo scenario
+                const totalFirstMonthFreeDeo = firstMonthMonthlyTotalBeforeDeoDiscount - petWasteDiscountAmount - firstMonthDeoDiscountAmount;
+
+
+                // Update UI
+                originalPricingDisplay.textContent = formatCurrency(originalBasePricePerVisit);
+                basePriceDisplay.textContent = formatCurrency(currentBasePricePerVisit);
+                deodorizationCostDisplay.textContent = formatCurrency(deodorizationCostPerVisit);
+                offsiteDisposalCostDisplay.textContent = formatCurrency(offsiteDisposalCostPerVisit);
+                subtotalDisplay.textContent = formatCurrency(subtotalMonthly);
+
+                finalPriceDisplay.textContent = formatCurrency(Math.max(0, finalPriceMonthly));
+                finalPriceWithoutDeodorizationDisplay.textContent = formatCurrency(Math.max(0, finalPriceWithoutDeodorizationMonthly));
+
+                // Update NEW DISPLAY for First Month Pricing With Free Deo
+                if (firstMonthSelected) {
+                    firstMonthPricingDiv.classList.remove('hidden');
+                    firstMonthGrossAmount.textContent = formatCurrency(firstMonthMonthlyTotalBeforeDeoDiscount);
+                    firstMonthPricingDiscount1.textContent = `-${formatCurrency(petWasteDiscountAmount)}`;
+                    firstMonthPricingDiscount2.textContent = `-${formatCurrency(firstMonthDeoDiscountAmount)}`;
+                    firstMonthPricingValue.textContent = formatCurrency(Math.max(0, totalFirstMonthFreeDeo));
+                } else {
+                    firstMonthPricingDiv.classList.add('hidden');
+                }
+            };
+
+            // Add event listeners to all input elements to trigger calculation on change
+            numDogsSelect.addEventListener('change', calculatePrice);
+            frequencySelect.addEventListener('change', calculatePrice);
+            deodorizationCheckbox.addEventListener('change', calculatePrice);
+            offsiteDisposalCheckbox.addEventListener('change', calculatePrice);
+            firstMonthCheckbox.addEventListener('change', calculatePrice);
+
+            // Initial calculation when the page loads
+            calculatePrice();
+        });
+    </script>
 </body>
 </html>
